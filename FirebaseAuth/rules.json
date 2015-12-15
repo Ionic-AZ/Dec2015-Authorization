@@ -1,0 +1,23 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+        "$user_id": {
+          // grants write access to the owner of this user account whose uid must exactly match the key ($uid)
+        ".write": "auth !== null && auth.uid === $user_id",
+        // grants read access to any user who is logged in with GitHub
+        ".read": "auth !== null && auth.uid === $user_id"
+        }
+  }
+}
+
+Expected Data Structure
+
+"uid": {
+  "project key": {
+    "title": "Project 1",
+    "tasks":{
+      
+    }    
+  }  
+}
