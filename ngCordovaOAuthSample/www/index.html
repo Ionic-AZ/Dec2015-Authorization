@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+
+
+  <!-- compiled css output -->
+  <link href="css/ionic.app.css" rel="stylesheet">
+
+  <!-- ionic/angularjs js -->
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+
+  <!-- cordova script (this will be a 404 during development) -->
+  <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+  <script src="cordova.js"></script>
+  <script src="lib/ng-cordova-oauth/dist/ng-cordova-oauth.min.js"></script>
+
+  <!-- your app's js -->
+  <script src="js/app.js"></script>
+</head>
+
+<body ng-app="starter">
+
+  <ion-pane ng-controller="AppCtrl">
+    <ion-header-bar class="bar-stable">
+      ngCordova OAuth Plugin
+    </ion-header-bar>
+    <ion-content class="login-container">
+      <div class="col button-row text-center">
+        <button type="button" class="button button-block button-dark icon-left ion-social-github" ng-click="login('github')">Github</button>
+      </div>
+      <div class="col button-row text-center">
+        <button type="button" class="button button-block button-positive icon-left ion-social-facebook" ng-click="login('facebook')">Facebook</button>
+      </div>
+      <div class="col button-row text-center">
+        <button type="button" class="button button-block button-assertive icon-left ion-social-googleplus" ng-click="login('google')">Google+</button>
+      </div>
+
+      <div class="col button-row text-center">
+        <button type="button" class="button button-block button-calm icon-left ion-social-twitter" ng-click="login('twitter')">Twitter</button>
+      </div>
+
+       <div ng-if="github" class="list card">
+        <div class="item item-avatar">
+          <img ng-src="{{github.data.avatar_url}}" alt="">
+          <h2>{{github.data.name}}</h2>
+          <p>{{github.data.login}}</p>
+          <p>{{github.data.id}}
+          <p><i class="icon ion-social-github"></i> Github</p>
+        </div>
+        <pre>{{ github | json }}</pre>
+        
+      </div>
+      Raw: 
+      <pre>{{ githubraw | json }}</pre>
+      
+      Json:
+        <pre>{{ githubjson | json }}</pre>
+      <div ng-if="facebook" class="list card">
+        <div class="item item-avatar">
+          <img ng-src="{{facebook.profileImageURL}}" alt="">
+          <h2>{{facebook.displayName}}</h2>
+          <p>{{facebook.email}}</p>
+          <p>{{facebook.uid}}</p>
+          <p><i class="icon ion-social-facebook"></i> Facebook</p>
+        </div>
+        <pre>{{ facebook | json }}</pre>
+      </div>
+      <div ng-if="google" class="list card">
+        <div class="item item-avatar">
+          <img ng-src="{{google.profileImageURL}}" alt="">
+          <h2>{{google.displayName}}</h2>
+          <p>{{google.id}}</p>
+          <p>{{google.uid}}</p>
+          <p><i class="icon ion-social-googleplus"></i> Google</p>
+        </div>
+        <pre>{{ google | json }}</pre>
+      </div>
+      <div ng-if="twitter" class="list card">
+        <div class="item item-avatar">
+          <img ng-src="{{twitter.profileImageURL}}" alt="">
+          <h2>{{twitter.displayName}}</h2>
+          <p>{{twitter.username}}</p>
+          <p>{{twitter.uid}}</p>
+          <p><i class="icon ion-social-twitter"></i> Twitter</p>
+        </div>
+        <pre>{{ twitter | json }}</pre>
+      </div>
+       
+       <div ng-ig="authData">
+        <pre>{{ authData | json }}</pre>
+      </div>
+    </ion-content>
+  </ion-pane>
+</body>
+
+</html>
