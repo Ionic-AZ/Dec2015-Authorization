@@ -18,12 +18,6 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngCordovaOauth'])
     });
   })
   .controller('AppCtrl', function ($scope, $cordovaOauth, $ionicPlatform, $http) {
-      // $http.get('https://api.github.com/user?access_token=2b6fdc18a467b1827d7a52ce9b81e07cda9f9602')
-      //         .then(function (authdata) {
-      //           $scope.github = authdata;
-      // });
-      //         
-      
       function QueryStringToJSON(txt) {            
     var pairs = txt.split('&');
     
@@ -42,7 +36,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngCordovaOauth'])
 
         } else if (authMethod === "github") {
           //https://developer.github.com/v3/oauth/#scopes
-          $cordovaOauth.github("c38f92f08656340e0275", 'bd91fca1f33327be3a74017637051a3c4a893610', ["user:email"]).then(function (result) {
+          $cordovaOauth.github("client id", 'client service id', ["user:email"]).then(function (result) {
             $scope.githubraw = result;
             $scope.githubjson = QueryStringToJSON(result);
             console.log('githubjson', $scope.githubjson);            
